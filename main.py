@@ -1,6 +1,6 @@
 from datetime import datetime, timedelta
 
-distancia = float(input("Digite a distância em MN: "))
+distancia = float(input("Digite a distância em MN (Milhas Náuticas): "))
 veloc = float(input("Digite a Velocidade Média em Nós: "))
 datahora_ultima_posicao = input("Digite a DATAHORA da última posição exemplo: 01/09/2023 12:30: ")
 
