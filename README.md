@@ -1,5 +1,5 @@
 # vessel_eta
-This application calculate the ETA (Estimated Time Arrive) of a vessel.
+This application calculate the ETA (Estimated Time Arrival) of a vessel.
 
 When a vessel depart from a port, it needs to calculate the estimated time to arrive to inform family members of the crew and authorities.
 

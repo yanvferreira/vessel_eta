@@ -12,7 +12,10 @@ except ValueError:
 except:
     print("Algo deu errado, tente novamente!")
 
-horas = distancia / veloc
+try:
+    horas = distancia / veloc
+except ZeroDivisionError:
+    print("Não se pode dividir pela velocidade zero!")
 
 delta = timedelta(hours=horas)
 
