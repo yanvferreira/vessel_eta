@@ -16,7 +16,14 @@ def calcular_tempo_estimado():
         horas = distancia / veloc
         delta = timedelta(hours=horas)
 
-        tempo_estimado_label.config(text="Tempo estimado: " + str(delta))
+        dias = delta.days
+        horas_restantes = delta.seconds // 3600
+        minutos_restantes = (delta.seconds % 3600) // 60
+
+        tempo_estimado_label.config(text="Tempo estimado: {} dias, {} horas e {} minutos".format(dias, horas_restantes, minutos_restantes))
+
+
+        #tempo_estimado_label.config(text="Tempo estimado: " + str(delta))
 
         datahora_ultima_posicao_label.config(text="Ultimo sinal emitido em: " + datahora_ultima_posicao.strftime("%d/%m/%Y às %H:%M"))
 
@@ -31,6 +38,15 @@ def calcular_tempo_estimado():
     except Exception as e:
         messagebox.showerror("Erro", "Algo deu errado, tente novamente!")
 
+def limpar_campos():
+    entry_distancia.delete(0, END)
+    entry_velocidade.delete(0, END)
+    entry_datahora_ultima_posicao.delete(0, END)
+    tempo_estimado_label.config(text="")
+    datahora_ultima_posicao_label.config(text="")
+    eta_label.config(text="")
+
+# Criando a tela
 root = Tk()
 root.title("Calculadora de Tempo Estimado")
 
@@ -49,14 +65,17 @@ label_velocidade.grid(row=1, column=0, sticky="w")
 entry_velocidade = Entry(frame)
 entry_velocidade.grid(row=1, column=1)
 
-label_datahora_ultima_posicao = Label(frame, text="DATAHORA da última posição (exemplo: 01/04/2024 12:30):")
+label_datahora_ultima_posicao = Label(frame, text="DATAHORA da última posição (exemplo: 01/09/2023 12:30):")
 label_datahora_ultima_posicao.grid(row=2, column=0, sticky="w")
 
 entry_datahora_ultima_posicao = Entry(frame)
 entry_datahora_ultima_posicao.grid(row=2, column=1)
 
 calcular_button = Button(frame, text="Calcular", command=calcular_tempo_estimado)
-calcular_button.grid(row=3, columnspan=2, pady=10)
+calcular_button.grid(row=3, column=0, sticky="e", padx=5, pady=5)
+
+limpar_button = Button(frame, text="Limpar", command=limpar_campos)
+limpar_button.grid(row=3, column=1, sticky="e", padx=5, pady=5)
 
 tempo_estimado_label = Label(frame, text="")
 tempo_estimado_label.grid(row=4, columnspan=2)
@@ -66,5 +85,6 @@ datahora_ultima_posicao_label.grid(row=5, columnspan=2)
 
 eta_label = Label(frame, text="")
 eta_label.grid(row=6, columnspan=2)
+
 
 root.mainloop()
