@@ -1,3 +1,6 @@
 https://pt.stackoverflow.com/questions/183381/como-criar-um-execut%C3%A1vel-a-partir-de-python
 
 python3 setup.py build
+
+https://www.youtube.com/watch?v=FYq_rJ_B_Uw
+auto-py-to-exe
