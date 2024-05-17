@@ -92,6 +92,7 @@ root = ttk.Window(themename="superhero")
 #root = tk.Tk()
 root.title("VESSEL ETA - Calculadora de Tempo Estimado")
 root.iconbitmap('assets/icon-hook-48x48.ico')
+root.geometry('500x350')
 
 notebook = ttk.Notebook(root)
 notebook.pack(fill='both', expand=True)
@@ -115,36 +116,36 @@ notebook.add(frame_help, text="Ajuda")
 label_distancia = Label(frame_eta, text="Distância em MN (Milhas Náuticas):")
 label_distancia.grid(row=0, column=0, sticky="w")
 
-entry_distancia = Entry(frame_eta)
-entry_distancia.grid(row=0, column=1)
+entry_distancia = ttk.Entry(frame_eta, bootstyle="warning")
+entry_distancia.grid(row=0, column=1, padx=30, pady=5)
 entry_distancia.focus_set() 
 
 label_velocidade = Label(frame_eta, text="Velocidade Média em Nós:")
 label_velocidade.grid(row=1, column=0, sticky="w")
 
-entry_velocidade = Entry(frame_eta)
-entry_velocidade.grid(row=1, column=1)
+entry_velocidade = ttk.Entry(frame_eta, bootstyle="warning")
+entry_velocidade.grid(row=1, column=1, padx=30, pady=5)
 
-label_datahora_ultima_posicao = Label(frame_eta, text="DATAHORA da última posição (exemplo: 01/09/2023 12:30):")
+label_datahora_ultima_posicao = Label(frame_eta, text="DATAHORA da última posição:")
 label_datahora_ultima_posicao.grid(row=2, column=0, sticky="w")
 
-entry_datahora_ultima_posicao = Entry(frame_eta)
-entry_datahora_ultima_posicao.grid(row=2, column=1)
+entry_datahora_ultima_posicao = ttk.Entry(frame_eta, bootstyle="warning")
+entry_datahora_ultima_posicao.grid(row=2, column=1, padx=30, pady=5)
 entry_datahora_ultima_posicao.insert(0, preencher_datahora_atual())
 
 label_fuso_horario = Label(frame_eta, text="Selecione o fuso horário:")
 label_fuso_horario.grid(row=3, column=0, sticky="w")
 
 timezones = ["P", "Z", "Selecionar fuso horário"]
-timezone_combobox = ttk.Combobox(frame_eta, values=timezones, state="readonly")
+timezone_combobox = ttk.Combobox(frame_eta, values=timezones, state="readonly", bootstyle="warning")
 timezone_combobox.set("P")
-timezone_combobox.grid(row=3, column=1)
+timezone_combobox.grid(row=3, column=1, padx=30, pady=5)
 
-calcular_button = Button(frame_eta, text="Calcular", command=calcular_tempo_estimado)
-calcular_button.grid(row=4, column=0, sticky="e", padx=5, pady=5)
+calcular_button = ttk.Button(frame_eta, text="Calcular", bootstyle="success", command=calcular_tempo_estimado)
+calcular_button.grid(row=0, column=4, sticky="e", padx=5, pady=5)
 
-limpar_button = Button(frame_eta, text="Limpar", command=limpar_campos)
-limpar_button.grid(row=4, column=1, sticky="e", padx=5, pady=5)
+limpar_button = ttk.Button(frame_eta, text="Limpar", bootstyle="secondary", command=limpar_campos)
+limpar_button.grid(row=1, column=4, sticky="e", padx=5, pady=5)
 
 tempo_estimado_label = Label(frame_eta, text="")
 tempo_estimado_label.grid(row=5, columnspan=2)
@@ -162,18 +163,18 @@ eta_fuso_label.grid(row=8, columnspan=2)
 label_data_inicio = Label(frame_data, text="Data Inicial")
 label_data_inicio.grid(row=0, column=0, sticky="w")
 
-entry_data_inicio = Entry(frame_data)
-entry_data_inicio.grid(row=0, column=1)
+entry_data_inicio = ttk.Entry(frame_data, bootstyle="warning")
+entry_data_inicio.grid(row=0, column=1, padx=30, pady=5)
 entry_data_inicio.insert(0, preencher_datahora_atual())
 
 label_data_fim = Label(frame_data, text="Data Final")
 label_data_fim.grid(row=1, column=0, sticky="w")
 
-entry_data_fim = Entry(frame_data)
-entry_data_fim.grid(row=1, column=1)
+entry_data_fim = ttk.Entry(frame_data, bootstyle="warning")
+entry_data_fim.grid(row=1, column=1, padx=30, pady=5)
 entry_data_fim.insert(0, preencher_datahora_atual())
 
-calcular_button_data = Button(frame_data, text="Calcular", command=calcular_data)
+calcular_button_data = ttk.Button(frame_data, text="Calcular", bootstyle="success", command=calcular_data)
 calcular_button_data.grid(row=0, column=4, sticky="e", padx=15, pady=5)
 
 #frame Ajuda
