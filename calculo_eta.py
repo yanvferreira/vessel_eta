@@ -3,7 +3,7 @@
 
 from tkinter import *
 from tkinter import messagebox
-from tkinter import ttk
+import ttkbootstrap as ttk
 from datetime import datetime, timedelta
 
 def preencher_datahora_atual():
@@ -48,9 +48,6 @@ def calcular_tempo_estimado():
 
         tempo_estimado_label.config(text="Tempo estimado: {} dias, {} horas e {} minutos".format(dias, horas_restantes, minutos_restantes))
 
-
-        #tempo_estimado_label.config(text="Tempo estimado: " + str(delta))
-
         datahora_ultima_posicao_label.config(text="Ultimo sinal emitido em: " + datahora_ultima_posicao.strftime("%d/%m/%Y às %H:%M") + timezone_selecionado)
 
         data_futura = datahora_ultima_posicao + delta
@@ -68,6 +65,18 @@ def calcular_tempo_estimado():
     except Exception as e:
         messagebox.showerror("Erro", "Algo deu errado, tente novamente!")
 
+def calcular_data():
+    try:
+        dt_inicial = datetime.strptime(entry_data_inicio.get(), "%d/%m/%Y %H:%M")
+        dt_final = datetime.strptime(entry_data_fim.get(), "%d/%m/%Y %H:%M")
+
+        data_result = dt_final - dt_inicial
+
+        messagebox.showinfo("Teste", data_result.seconds // 3600)
+
+    except Exception as e:
+        messagebox.showerror("Erro", "Algo deu errado, tente novamente!")
+
 def limpar_campos():
     entry_distancia.delete(0, END)
     entry_velocidade.delete(0, END)
@@ -79,7 +88,8 @@ def limpar_campos():
     eta_fuso_label.config(text="")
 
 # Criando a tela
-root = Tk()
+root = ttk.Window(themename="superhero")
+#root = tk.Tk()
 root.title("VESSEL ETA - Calculadora de Tempo Estimado")
 
 notebook = ttk.Notebook(root)
@@ -91,10 +101,14 @@ notebook.pack(fill='both', expand=True)
 frame_eta = Frame(notebook)
 frame_eta.pack(fill='both', expand=True)
 
+frame_data = Frame(notebook)
+frame_data.pack(fill='both', expand=True)
+
 frame_help = Frame(notebook)
 frame_help.pack(fill='both', expand=True)
 
-notebook.add(frame_eta, text="Cálculo")
+notebook.add(frame_eta, text="Cálculo ETA")
+notebook.add(frame_data, text="Cálculo de Data")
 notebook.add(frame_help, text="Ajuda")
 
 label_distancia = Label(frame_eta, text="Distância em MN (Milhas Náuticas):")
@@ -143,6 +157,25 @@ eta_label.grid(row=7, columnspan=2)
 eta_fuso_label = Label(frame_eta, text="")
 eta_fuso_label.grid(row=8, columnspan=2)
 
+#frame Data
+label_data_inicio = Label(frame_data, text="Data Inicial")
+label_data_inicio.grid(row=0, column=0, sticky="w")
+
+entry_data_inicio = Entry(frame_data)
+entry_data_inicio.grid(row=0, column=1)
+entry_data_inicio.insert(0, preencher_datahora_atual())
+
+label_data_fim = Label(frame_data, text="Data Final")
+label_data_fim.grid(row=1, column=0, sticky="w")
+
+entry_data_fim = Entry(frame_data)
+entry_data_fim.grid(row=1, column=1)
+entry_data_fim.insert(0, preencher_datahora_atual())
+
+calcular_button_data = Button(frame_data, text="Calcular", command=calcular_data)
+calcular_button_data.grid(row=0, column=4, sticky="e", padx=15, pady=5)
+
+#frame Ajuda
 label_ajuda = Label(frame_help, text="Desenvolvido por 3ºSG-PD FERREIRA", bg="lightgray")
 label_ajuda.grid(row=0, columnspan=2)
 
