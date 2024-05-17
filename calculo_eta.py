@@ -91,6 +91,7 @@ def limpar_campos():
 root = ttk.Window(themename="superhero")
 #root = tk.Tk()
 root.title("VESSEL ETA - Calculadora de Tempo Estimado")
+root.iconbitmap('assets/icon-hook-48x48.ico')
 
 notebook = ttk.Notebook(root)
 notebook.pack(fill='both', expand=True)
