@@ -69,10 +69,20 @@ def calcular_data():
     try:
         dt_inicial = datetime.strptime(entry_data_inicio.get(), "%d/%m/%Y %H:%M")
         dt_final = datetime.strptime(entry_data_fim.get(), "%d/%m/%Y %H:%M")
+        veloc_interesse = entry_veloc_interesse.get()
 
         data_result = dt_final - dt_inicial
 
-        messagebox.showinfo("Teste", data_result.seconds // 3600)
+        data_result = data_result / timedelta(hours=1)
+
+        label_result_hora.config(text="Diferença em Horas: {:.2f}".format(data_result))
+
+        if (veloc_interesse):
+            distancia_percorrida = data_result * float(veloc_interesse)
+            
+            label_distancia_percorrida.config(text="Distância percorrida pelo Navio de Interesse: {:.2f} Milhas Náuticas".format(distancia_percorrida))
+        else:
+            label_distancia_percorrida.config(text="")
 
     except Exception as e:
         messagebox.showerror("Erro", "Algo deu errado, tente novamente!")
@@ -89,10 +99,9 @@ def limpar_campos():
 
 # Criando a tela
 root = ttk.Window(themename="superhero")
-#root = tk.Tk()
 root.title("VESSEL ETA - Calculadora de Tempo Estimado")
 root.iconbitmap('assets/icon-hook-48x48.ico')
-root.geometry('500x350')
+root.geometry('500x300')
 
 notebook = ttk.Notebook(root)
 notebook.pack(fill='both', expand=True)
@@ -148,34 +157,46 @@ limpar_button = ttk.Button(frame_eta, text="Limpar", bootstyle="secondary", comm
 limpar_button.grid(row=1, column=4, sticky="e", padx=5, pady=5)
 
 tempo_estimado_label = Label(frame_eta, text="")
-tempo_estimado_label.grid(row=5, columnspan=2)
+tempo_estimado_label.grid(row=5, columnspan=3)
 
 datahora_ultima_posicao_label = Label(frame_eta, text="")
-datahora_ultima_posicao_label.grid(row=6, columnspan=2)
+datahora_ultima_posicao_label.grid(row=6, columnspan=3)
 
 eta_label = Label(frame_eta, text="")
-eta_label.grid(row=7, columnspan=2)
+eta_label.grid(row=7, columnspan=4)
 
 eta_fuso_label = Label(frame_eta, text="")
-eta_fuso_label.grid(row=8, columnspan=2)
+eta_fuso_label.grid(row=8, columnspan=4)
 
 #frame Data
-label_data_inicio = Label(frame_data, text="Data Inicial")
+label_data_inicio = Label(frame_data, text="Data do Navio de Interesse:")
 label_data_inicio.grid(row=0, column=0, sticky="w")
 
 entry_data_inicio = ttk.Entry(frame_data, bootstyle="warning")
 entry_data_inicio.grid(row=0, column=1, padx=30, pady=5)
 entry_data_inicio.insert(0, preencher_datahora_atual())
 
-label_data_fim = Label(frame_data, text="Data Final")
-label_data_fim.grid(row=1, column=0, sticky="w")
+label_veloc_interesse = Label(frame_data, text="Velocidade do Navio de Interesse:")
+label_veloc_interesse.grid(row=1, column=0, sticky="w")
+
+entry_veloc_interesse = ttk.Entry(frame_data, bootstyle="warning")
+entry_veloc_interesse.grid(row=1, column=1, padx=30, pady=5)
+
+label_data_fim = Label(frame_data, text="Partida do Navio de Abordagem:")
+label_data_fim.grid(row=2, column=0, sticky="w")
 
 entry_data_fim = ttk.Entry(frame_data, bootstyle="warning")
-entry_data_fim.grid(row=1, column=1, padx=30, pady=5)
+entry_data_fim.grid(row=2, column=1, padx=30, pady=5)
 entry_data_fim.insert(0, preencher_datahora_atual())
 
 calcular_button_data = ttk.Button(frame_data, text="Calcular", bootstyle="success", command=calcular_data)
 calcular_button_data.grid(row=0, column=4, sticky="e", padx=15, pady=5)
+
+label_result_hora = Label(frame_data, text="")
+label_result_hora.grid(row=3, columnspan=2)
+
+label_distancia_percorrida = Label(frame_data, text="")
+label_distancia_percorrida.grid(row=4, columnspan=2)
 
 #frame Ajuda
 label_ajuda = Label(frame_help, text="Desenvolvido por 3ºSG-PD FERREIRA", bg="lightgray")
