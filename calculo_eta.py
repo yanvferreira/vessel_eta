@@ -122,27 +122,35 @@ notebook.add(frame_eta, text="Cálculo ETA")
 notebook.add(frame_data, text="Cálculo de Data")
 notebook.add(frame_help, text="Ajuda")
 
-label_distancia = Label(frame_eta, text="Distância em MN (Milhas Náuticas):")
+label_distancia = Label(frame_eta, 
+                        text="Distância em MN (Milhas Náuticas):",
+                        font=('Helvetica', 10))
 label_distancia.grid(row=0, column=0, sticky="w")
 
 entry_distancia = ttk.Entry(frame_eta, bootstyle="warning")
 entry_distancia.grid(row=0, column=1, padx=30, pady=5)
 entry_distancia.focus_set() 
 
-label_velocidade = Label(frame_eta, text="Velocidade Média em Nós:")
+label_velocidade = Label(frame_eta, 
+                         text="Velocidade Média em Nós:",
+                         font=('Helvetica', 10))
 label_velocidade.grid(row=1, column=0, sticky="w")
 
 entry_velocidade = ttk.Entry(frame_eta, bootstyle="warning")
 entry_velocidade.grid(row=1, column=1, padx=30, pady=5)
 
-label_datahora_ultima_posicao = Label(frame_eta, text="DATAHORA da última posição:")
+label_datahora_ultima_posicao = Label(frame_eta, 
+                                      text="DATAHORA da última posição:",
+                                      font=('Helvetica', 10))
 label_datahora_ultima_posicao.grid(row=2, column=0, sticky="w")
 
 entry_datahora_ultima_posicao = ttk.Entry(frame_eta, bootstyle="warning")
 entry_datahora_ultima_posicao.grid(row=2, column=1, padx=30, pady=5)
 entry_datahora_ultima_posicao.insert(0, preencher_datahora_atual())
 
-label_fuso_horario = Label(frame_eta, text="Selecione o fuso horário:")
+label_fuso_horario = Label(frame_eta, 
+                           text="Selecione o fuso horário:",
+                           font=('Helvetica', 10))
 label_fuso_horario.grid(row=3, column=0, sticky="w")
 
 timezones = ["P", "Z", "Selecionar fuso horário"]
@@ -151,38 +159,47 @@ timezone_combobox.set("P")
 timezone_combobox.grid(row=3, column=1, padx=30, pady=5)
 
 calcular_button = ttk.Button(frame_eta, text="Calcular", bootstyle="success", command=calcular_tempo_estimado)
-calcular_button.grid(row=0, column=4, sticky="e", padx=5, pady=5)
+calcular_button.grid(row=0, column=2, sticky="e", padx=5, pady=5)
 
 limpar_button = ttk.Button(frame_eta, text="Limpar", bootstyle="secondary", command=limpar_campos)
-limpar_button.grid(row=1, column=4, sticky="e", padx=5, pady=5)
+limpar_button.grid(row=1, column=2, sticky="e", padx=5, pady=5)
 
-tempo_estimado_label = Label(frame_eta, text="")
-tempo_estimado_label.grid(row=5, columnspan=3)
+frame_label_eta = ttk.LabelFrame(frame_eta, text="Resultado", style="warning.TLabelframe")
+frame_label_eta.grid(column=0, row=4, columnspan=3, padx=5, pady=5, sticky='w')
 
-datahora_ultima_posicao_label = Label(frame_eta, text="")
-datahora_ultima_posicao_label.grid(row=6, columnspan=3)
+tempo_estimado_label = ttk.Label(frame_label_eta, text="", width=50)
+tempo_estimado_label.grid(row=0, column=0, padx=20)
 
-eta_label = Label(frame_eta, text="")
-eta_label.grid(row=7, columnspan=4)
+datahora_ultima_posicao_label = ttk.Label(frame_label_eta, text="", width=50)
+datahora_ultima_posicao_label.grid(row=1, column=0, padx=20)
 
-eta_fuso_label = Label(frame_eta, text="")
-eta_fuso_label.grid(row=8, columnspan=4)
+eta_label = ttk.Label(frame_label_eta, text="", width=50)
+eta_label.grid(row=2, column=0, padx=20)
+
+eta_fuso_label = ttk.Label(frame_label_eta, text="", width=50)
+eta_fuso_label.grid(row=3, column=0, padx=20)
 
 #frame Data
-label_data_inicio = Label(frame_data, text="Data do Navio de Interesse:")
+label_data_inicio = Label(frame_data, 
+                          text="Data do Navio de Interesse:", 
+                          font=('Helvetica', 10))
 label_data_inicio.grid(row=0, column=0, sticky="w")
 
 entry_data_inicio = ttk.Entry(frame_data, bootstyle="warning")
 entry_data_inicio.grid(row=0, column=1, padx=30, pady=5)
 entry_data_inicio.insert(0, preencher_datahora_atual())
 
-label_veloc_interesse = Label(frame_data, text="Velocidade do Navio de Interesse:")
+label_veloc_interesse = Label(frame_data, 
+                              text="Velocidade do Navio de Interesse:",
+                              font=('Helvetica', 10))
 label_veloc_interesse.grid(row=1, column=0, sticky="w")
 
 entry_veloc_interesse = ttk.Entry(frame_data, bootstyle="warning")
 entry_veloc_interesse.grid(row=1, column=1, padx=30, pady=5)
 
-label_data_fim = Label(frame_data, text="Partida do Navio de Abordagem:")
+label_data_fim = Label(frame_data, 
+                       text="Partida do Navio de Abordagem:",
+                       font=('Helvetica', 10))
 label_data_fim.grid(row=2, column=0, sticky="w")
 
 entry_data_fim = ttk.Entry(frame_data, bootstyle="warning")
