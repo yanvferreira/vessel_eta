@@ -115,12 +115,12 @@ frame_eta.pack(fill='both', expand=True)
 frame_data = Frame(notebook)
 frame_data.pack(fill='both', expand=True)
 
-frame_help = Frame(notebook)
-frame_help.pack(fill='both', expand=True)
+frame_about = Frame(notebook)
+frame_about.pack(fill='both', expand=True)
 
 notebook.add(frame_eta, text="Cálculo ETA")
 notebook.add(frame_data, text="Cálculo de Data")
-notebook.add(frame_help, text="Ajuda")
+notebook.add(frame_about, text="Sobre")
 
 label_distancia = Label(frame_eta, 
                         text="Distância em MN (Milhas Náuticas):",
@@ -218,11 +218,15 @@ label_result_hora.grid(row=0, column=0, padx=20)
 label_distancia_percorrida = ttk.Label(frame_label_data, text="", width=40, font=('Helvetica', 10))
 label_distancia_percorrida.grid(row=1, column=0, padx=20)
 
-#frame Ajuda
-label_ajuda = ttk.Label(frame_help, text="Desenvolvido por 3ºSG-PD FERREIRA", font=('Helvetica', 10))
-label_ajuda.grid(row=0, column=0, sticky='e')
+#frame Sobre
+ttk.Style().configure("Direito.TFrame", padding=10, relief="raised", anchor="center")
+frame_label_direitos = ttk.LabelFrame(frame_about, text="Direitos Autorais", style="Direito.TFrame")
+frame_label_direitos.grid(column=0, row=0)
 
-label_ajuda = ttk.Label(frame_help, text="Divisão de Telemática", font=('Helvetica', 10))
-label_ajuda.grid(row=1, column=0, sticky='e')
+label_sobre = ttk.Label(frame_label_direitos, text="Desenvolvido por 3ºSG-PD FERREIRA", font=('Helvetica'))
+label_sobre.grid(row=0, column=0, sticky='we')
+
+label_sobre = ttk.Label(frame_label_direitos, text="Divisão de Telemática", font=('Helvetica'))
+label_sobre.grid(row=1, column=0, sticky='we')
 
 root.mainloop()
