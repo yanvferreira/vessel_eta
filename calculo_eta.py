@@ -140,13 +140,57 @@ datahora_ultima_posicao_label.grid(row=6, columnspan=2)
 eta_label = Label(frame_eta, text="")
 eta_label.grid(row=7, columnspan=2)
 
-eta_fuso_label = Label(frame_eta, text="")
-eta_fuso_label.grid(row=8, columnspan=2)
+eta_fuso_label = ttk.Label(frame_label_eta, text="", width=50, font=('Helvetica', 10))
+eta_fuso_label.grid(row=3, column=0, padx=20)
 
-label_ajuda = Label(frame_help, text="Desenvolvido por 3ºSG-PD FERREIRA", bg="lightgray")
-label_ajuda.grid(row=0, columnspan=2)
+#frame Data
+label_data_inicio = Label(frame_data, 
+                          text="Data do Navio de Interesse:", 
+                          font=('Helvetica', 10))
+label_data_inicio.grid(row=0, column=0, sticky="w")
 
-label_ajuda = Label(frame_help, text="Divisão de Telemática", bg="lightgray")
-label_ajuda.grid(row=1, columnspan=2)
+entry_data_inicio = ttk.Entry(frame_data, bootstyle="warning")
+entry_data_inicio.grid(row=0, column=1, padx=30, pady=5)
+entry_data_inicio.insert(0, preencher_datahora_atual())
+
+label_veloc_interesse = Label(frame_data, 
+                              text="Velocidade do Navio de Interesse:",
+                              font=('Helvetica', 10))
+label_veloc_interesse.grid(row=1, column=0, sticky="w")
+
+entry_veloc_interesse = ttk.Entry(frame_data, bootstyle="warning")
+entry_veloc_interesse.grid(row=1, column=1, padx=30, pady=5)
+
+label_data_fim = Label(frame_data, 
+                       text="Partida do Navio de Abordagem:",
+                       font=('Helvetica', 10))
+label_data_fim.grid(row=2, column=0, sticky="w")
+
+entry_data_fim = ttk.Entry(frame_data, bootstyle="warning")
+entry_data_fim.grid(row=2, column=1, padx=30, pady=5)
+entry_data_fim.insert(0, preencher_datahora_atual())
+
+calcular_button_data = ttk.Button(frame_data, text="Calcular", bootstyle="success", command=calcular_data)
+calcular_button_data.grid(row=0, column=2, sticky="e", padx=15, pady=5)
+
+frame_label_data = ttk.LabelFrame(frame_data, text="Resultado", style="warning.TLabelframe")
+frame_label_data.grid(column=0, row=3, columnspan=3, padx=5, pady=5, sticky='w')
+
+label_result_hora = ttk.Label(frame_label_data, text="", width=40, font=('Helvetica', 10))
+label_result_hora.grid(row=0, column=0, padx=20)
+
+label_distancia_percorrida = ttk.Label(frame_label_data, text="", width=40, font=('Helvetica', 10))
+label_distancia_percorrida.grid(row=1, column=0, padx=20)
+
+#frame Sobre
+ttk.Style().configure("Direito.TFrame", padding=10, relief="raised")
+frame_label_direitos = ttk.LabelFrame(frame_about, text="Direitos Autorais", style="Direito.TFrame")
+frame_label_direitos.grid(column=0, row=0)
+
+label_sobre = ttk.Label(frame_label_direitos, text="Desenvolvido por 3ºSG-PD FERREIRA", font=('Helvetica'))
+label_sobre.grid(row=0, column=0, sticky='we')
+
+label_sobre = ttk.Label(frame_label_direitos, text="Divisão de Telemática", font=('Helvetica'))
+label_sobre.grid(row=1, column=0, sticky='we')
 
 root.mainloop()
