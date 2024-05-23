@@ -80,7 +80,7 @@ def calcular_data():
         if (veloc_interesse):
             distancia_percorrida = data_result * float(veloc_interesse)
             
-            label_distancia_percorrida.config(text="Distância percorrida pelo Navio de Interesse: {:.2f} Milhas Náuticas".format(distancia_percorrida))
+            label_distancia_percorrida.config(text="Distância percorrida: {:.2f} Milhas Náuticas".format(distancia_percorrida))
         else:
             label_distancia_percorrida.config(text="")
 
@@ -207,19 +207,22 @@ entry_data_fim.grid(row=2, column=1, padx=30, pady=5)
 entry_data_fim.insert(0, preencher_datahora_atual())
 
 calcular_button_data = ttk.Button(frame_data, text="Calcular", bootstyle="success", command=calcular_data)
-calcular_button_data.grid(row=0, column=4, sticky="e", padx=15, pady=5)
+calcular_button_data.grid(row=0, column=2, sticky="e", padx=15, pady=5)
 
-label_result_hora = Label(frame_data, text="")
-label_result_hora.grid(row=3, columnspan=2)
+frame_label_data = ttk.LabelFrame(frame_data, text="Resultado", style="warning.TLabelframe")
+frame_label_data.grid(column=0, row=3, columnspan=3, padx=5, pady=5, sticky='w')
 
-label_distancia_percorrida = Label(frame_data, text="")
-label_distancia_percorrida.grid(row=4, columnspan=2)
+label_result_hora = ttk.Label(frame_label_data, text="", width=40, font=('Helvetica', 10))
+label_result_hora.grid(row=0, column=0, padx=20)
+
+label_distancia_percorrida = ttk.Label(frame_label_data, text="", width=40, font=('Helvetica', 10))
+label_distancia_percorrida.grid(row=1, column=0, padx=20)
 
 #frame Ajuda
-label_ajuda = Label(frame_help, text="Desenvolvido por 3ºSG-PD FERREIRA", bg="lightgray")
-label_ajuda.grid(row=0, columnspan=2)
+label_ajuda = ttk.Label(frame_help, text="Desenvolvido por 3ºSG-PD FERREIRA", font=('Helvetica', 10))
+label_ajuda.grid(row=0, column=0, sticky='e')
 
-label_ajuda = Label(frame_help, text="Divisão de Telemática", bg="lightgray")
-label_ajuda.grid(row=1, columnspan=2)
+label_ajuda = ttk.Label(frame_help, text="Divisão de Telemática", font=('Helvetica', 10))
+label_ajuda.grid(row=1, column=0, sticky='e')
 
 root.mainloop()
