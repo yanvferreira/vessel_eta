@@ -48,7 +48,7 @@ def calcular_tempo_estimado():
 
         tempo_estimado_label.config(text="Tempo Estimado: {} dias, {} horas e {} minutos".format(dias, horas_restantes, minutos_restantes))
 
-        datahora_ultima_posicao_label.config(text="Ultimo sinal emitido: " + datahora_ultima_posicao.strftime("%d/%m/%Y às %H:%M") + timezone_selecionado)
+        datahora_ultima_posicao_label.config(text="Último sinal emitido: " + datahora_ultima_posicao.strftime("%d/%m/%Y às %H:%M") + timezone_selecionado)
 
         data_futura = datahora_ultima_posicao + delta
 
@@ -223,10 +223,19 @@ ttk.Style().configure("Direito.TFrame", padding=10, relief="raised")
 frame_label_direitos = ttk.LabelFrame(frame_about, text="Direitos Autorais", style="Direito.TFrame")
 frame_label_direitos.grid(column=0, row=0)
 
-label_sobre = ttk.Label(frame_label_direitos, text="Desenvolvido por 3ºSG-PD FERREIRA", font=('Helvetica'))
-label_sobre.grid(row=0, column=0, sticky='we')
+label_sobre_autor = ttk.Label(frame_label_direitos, text="Desenvolvido por 3ºSG-PD FERREIRA", font=('Helvetica'))
+label_sobre_autor.grid(row=0, column=0, sticky='we')
 
-label_sobre = ttk.Label(frame_label_direitos, text="Divisão de Telemática", font=('Helvetica'))
-label_sobre.grid(row=1, column=0, sticky='we')
+label_sobre_setor = ttk.Label(frame_label_direitos, text="Divisão de Telemática", font=('Helvetica'))
+label_sobre_setor.grid(row=1, column=0, sticky='we')
+
+label_sobre_OM = ttk.Label(frame_label_direitos, text="Comando do 3º Distrito Naval", font=('Helvetica'))
+label_sobre_OM.grid(row=2, column=0, sticky='we')
+
+frame_label_contribuicao = ttk.LabelFrame(frame_about, text="Contribuição", style="Direito.TFrame")
+frame_label_contribuicao.grid(column=0, row=1)
+
+label_sobre_contribuicao = ttk.Label(frame_label_contribuicao, text="https://github.com/yanvferreira/vessel_eta", font=('Helvetica'))
+label_sobre_contribuicao.grid(row=2, column=0, sticky='we')
 
 root.mainloop()
