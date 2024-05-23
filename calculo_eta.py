@@ -46,9 +46,9 @@ def calcular_tempo_estimado():
         horas_restantes = delta.seconds // 3600
         minutos_restantes = (delta.seconds % 3600) // 60
 
-        tempo_estimado_label.config(text="Tempo estimado: {} dias, {} horas e {} minutos".format(dias, horas_restantes, minutos_restantes))
+        tempo_estimado_label.config(text="Tempo Estimado: {} dias, {} horas e {} minutos".format(dias, horas_restantes, minutos_restantes))
 
-        datahora_ultima_posicao_label.config(text="Ultimo sinal emitido em: " + datahora_ultima_posicao.strftime("%d/%m/%Y às %H:%M") + timezone_selecionado)
+        datahora_ultima_posicao_label.config(text="Ultimo sinal emitido: " + datahora_ultima_posicao.strftime("%d/%m/%Y às %H:%M") + timezone_selecionado)
 
         data_futura = datahora_ultima_posicao + delta
 
@@ -167,16 +167,16 @@ limpar_button.grid(row=1, column=2, sticky="e", padx=5, pady=5)
 frame_label_eta = ttk.LabelFrame(frame_eta, text="Resultado", style="warning.TLabelframe")
 frame_label_eta.grid(column=0, row=4, columnspan=3, padx=5, pady=5, sticky='w')
 
-tempo_estimado_label = ttk.Label(frame_label_eta, text="", width=50)
+tempo_estimado_label = ttk.Label(frame_label_eta, text="", width=50, font=('Helvetica', 10))
 tempo_estimado_label.grid(row=0, column=0, padx=20)
 
-datahora_ultima_posicao_label = ttk.Label(frame_label_eta, text="", width=50)
+datahora_ultima_posicao_label = ttk.Label(frame_label_eta, text="", width=50, font=('Helvetica', 10))
 datahora_ultima_posicao_label.grid(row=1, column=0, padx=20)
 
-eta_label = ttk.Label(frame_label_eta, text="", width=50)
+eta_label = ttk.Label(frame_label_eta, text="", width=50, font=('Helvetica', 10))
 eta_label.grid(row=2, column=0, padx=20)
 
-eta_fuso_label = ttk.Label(frame_label_eta, text="", width=50)
+eta_fuso_label = ttk.Label(frame_label_eta, text="", width=50, font=('Helvetica', 10))
 eta_fuso_label.grid(row=3, column=0, padx=20)
 
 #frame Data
