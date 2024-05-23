@@ -219,7 +219,7 @@ label_distancia_percorrida = ttk.Label(frame_label_data, text="", width=40, font
 label_distancia_percorrida.grid(row=1, column=0, padx=20)
 
 #frame Sobre
-ttk.Style().configure("Direito.TFrame", padding=10, relief="raised", anchor="center")
+ttk.Style().configure("Direito.TFrame", padding=10, relief="raised")
 frame_label_direitos = ttk.LabelFrame(frame_about, text="Direitos Autorais", style="Direito.TFrame")
 frame_label_direitos.grid(column=0, row=0)
 
