@@ -4,13 +4,16 @@ bottle==0.12.25
 bottle-websocket==0.2.9
 certifi==2024.2.2
 charset-normalizer==3.3.2
+cx_Freeze==7.1.0
 Eel==0.16.0
+filelock==3.14.0
 future==1.0.0
 gevent==24.2.1
 gevent-websocket==0.10.1
 greenlet==3.0.3
 idna==3.7
 packaging==24.0
+patchelf==0.17.2.1
 pillow==10.3.0
 pyinstaller==6.6.0
 pyinstaller-hooks-contrib==2024.4

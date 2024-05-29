@@ -1,6 +1,7 @@
 #Criado por 3ºSG-PD FERREIRA em 15ABR24
 #DIVISÃO DE TELEMÁTICA
 
+import sys
 from tkinter import *
 from tkinter import messagebox
 import ttkbootstrap as ttk
@@ -100,8 +101,13 @@ def limpar_campos():
 # Criando a tela
 root = ttk.Window(themename="superhero")
 root.title("VESSEL ETA - Calculadora de Tempo Estimado")
-root.iconbitmap('assets/icon-hook-48x48.ico')
 root.geometry('500x300')
+try: 
+    root.iconbitmap('/assets/icon-hook-48x48.ico')
+except:
+    pass
+    #root.iconbitmap('assets/icon-hook-48x48.ico')
+
 
 notebook = ttk.Notebook(root)
 notebook.pack(fill='both', expand=True)
